@@ -31,4 +31,4 @@ def send_mail(workflow_name, repo_name):
     except Exception as e:
         print(f'Error: {e}')
 
-send_mail(os.getenv('WORKFLOW_NAME'), os.getenv('REPO_NAME'), os.getenv('WORKFLOW_RUN_ID'))
+send_email(os.getenv('WORKFLOW_NAME'), os.getenv('REPO_NAME'), os.getenv('WORKFLOW_RUN_ID'))
