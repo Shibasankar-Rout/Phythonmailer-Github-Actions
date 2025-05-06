@@ -3,7 +3,7 @@ from email.mime.text import MIMEText # MIMEText is the class that represents the
 from email.mime.multipart import MIMEMultipart # MIMEMultipart is the class that represents the email message itself
 import os
 
-def send_mail(workflow_name, repo_name):
+def send_email(workflow_name, repo_name):
     # Email details
     sender_email = os.getenv('SENDER_EMAIL')
     sender_password = os.getenv('SENDER_PASSWORD')
@@ -31,4 +31,4 @@ def send_mail(workflow_name, repo_name):
     except Exception as e:
         print(f'Error: {e}')
 
-send_mail(os.getenv('WORKFLOW_NAME'), os.getenv('REPO_NAME'), os.getenv('WORKFLOW_RUN_ID'))
+send_email(os.getenv('WORKFLOW_NAME'), os.getenv('REPO_NAME'), os.getenv('WORKFLOW_RUN_ID'))
