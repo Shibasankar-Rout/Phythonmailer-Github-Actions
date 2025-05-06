@@ -10,8 +10,8 @@ def send_email(workflow_name, repo_name):
     receiver_email = os.getenv('RECEIVER_EMAIL')
 
     # Email message
-    subject = f"Workflow {workflow_name} completed for {repo_name}"
-    body = f"Hi, the workflow {workflow_name} failed for the repo {repo_name}. Please check the logs for more details.\nMor Details: \nRun_ID: {workflow_run_id}"
+    subject = f"Workflow {workflow_name} failed for {repo_name}"
+    body = f"Hi, the workflow {workflow_name} failed for the repo {repo_name}. Please check the logs for more details.\nMore Details: \nRun_ID: {workflow_run_id}"
 
     msg = MIMEMultipart()
     msg['From'] = sender_email
@@ -27,8 +27,8 @@ def send_email(workflow_name, repo_name):
         server.sendmail(sender_email, receiver_email, text)
         server.quit()
 
-        print(f"Email sent to {receiver_email} successfully.")
+        print('Email sent successfully')
     except Exception as e:
-        print(f"Failed to send email. Error: {e}")
+        print(f'Error: {e}')
 
-send_email(os.getenv('WORKFLOW_NAME'), os.getenv('REPO_NAME'), os.getenv('WORKFLOW_RUN_ID'))
+send_mail(os.getenv('WORKFLOW_NAME'), os.getenv('REPO_NAME'), os.getenv('WORKFLOW_RUN_ID'))
